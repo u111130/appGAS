@@ -1,0 +1,44 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    //TextSize
+    <dimen name="sizeTituloInicialTexto">26dp</dimen>
+    <dimen name="sizeEntradaTexto">18sp</dimen>
+    <dimen name="sizeBotonTexto">20sp</dimen>
+    <dimen name="sizeTextoEnlace">14sp</dimen>
+    <dimen name="sizeDigitoVerif">25sp</dimen>
+    <dimen name="sizeTituloPrinTexto">36dp</dimen>
+    <dimen name="sizeUsuarioTitulo">20sp</dimen>
+
+    <dimen name="sizeTextoGeneral">18sp</dimen>
+    <dimen name="sizeTextoTienda">16sp</dimen>
+    <dimen name="sizeTextoPedido">14sp</dimen>
+
+    <dimen name="sizePrecioTexto">20sp</dimen>
+    <dimen name="sizeBotonTiendaTexto">16sp</dimen>
+
+    <dimen name="sizeConsultaPedidoTitulo">16sp</dimen>
+
+
+    //FontFamily
+    <font name="fontTituloInicialTexto">@font/nunito_sans_extralight</font>
+    <font name="fontEntradaTexto">@font/nunito_sans_extralight</font>
+
+    <font name="fontBotonTexto">@font/nunito_sans_extralight</font>
+    <font name="fontTextoEnlace">@font/nunito_sans_extralight</font>
+    <font name="fontDigitoVerif">@font/nunito_sans_extralight</font>
+    <font name="fontTituloPrinTexto">@font/nunito_sans_extralight</font>
+    <font name="fontUsuarioTitulo">@font/nunito_sans_extralight</font>
+
+    <font name="fontTextoGeneral">@font/nunito_sans_extralight</font>
+    <font name="fontTextoTienda">@font/nunito_sans_extralight</font>
+    <font name="fontTextoPedido">@font/nunito_sans_extralight</font>
+
+    <font name="fontPrecioTexto">@font/nunito_sans_extralight</font>
+    <font name="fontBotonTiendaTexto">@font/nunito_sans_extralight</font>
+
+    <font name="fontConsultaPedidoTitulo">@font/nunito_sans_extralight</font>
+
+</resources>
