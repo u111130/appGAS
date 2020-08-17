@@ -21,24 +21,4 @@
 
     <dimen name="sizeConsultaPedidoTitulo">16sp</dimen>
 
-
-    //FontFamily
-    <font name="fontTituloInicialTexto">@font/nunito_sans_extralight</font>
-    <font name="fontEntradaTexto">@font/nunito_sans_extralight</font>
-
-    <font name="fontBotonTexto">@font/nunito_sans_extralight</font>
-    <font name="fontTextoEnlace">@font/nunito_sans_extralight</font>
-    <font name="fontDigitoVerif">@font/nunito_sans_extralight</font>
-    <font name="fontTituloPrinTexto">@font/nunito_sans_extralight</font>
-    <font name="fontUsuarioTitulo">@font/nunito_sans_extralight</font>
-
-    <font name="fontTextoGeneral">@font/nunito_sans_extralight</font>
-    <font name="fontTextoTienda">@font/nunito_sans_extralight</font>
-    <font name="fontTextoPedido">@font/nunito_sans_extralight</font>
-
-    <font name="fontPrecioTexto">@font/nunito_sans_extralight</font>
-    <font name="fontBotonTiendaTexto">@font/nunito_sans_extralight</font>
-
-    <font name="fontConsultaPedidoTitulo">@font/nunito_sans_extralight</font>
-
 </resources>

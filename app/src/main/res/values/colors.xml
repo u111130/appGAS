@@ -19,10 +19,10 @@
     <color name="colorEntradaTextoFondo">#FFFFFF</color>
 
     <color name="colorBotonTexto">#000000</color>
-    <color name="colorButonFondo">#FFBBCF</color>
+    <color name="colorBotonFondo">#A665D1</color>
 
     <color name="colorPrecioTexto">#1CCCB4</color>
     <color name="colorBotonTiendaTexto">#000000</color>
-    <color name="colorButonTiendaFondo">#00C16A</color>
+    <color name="colorBotonTiendaFondo">#00C16A</color>
 
 </resources>
