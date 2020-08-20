@@ -13,11 +13,11 @@
     <dimen name="sizeUsuarioTitulo">20sp</dimen>
 
     <dimen name="sizeTextoGeneral">18sp</dimen>
-    <dimen name="sizeTextoTienda">16sp</dimen>
     <dimen name="sizeTextoPedido">14sp</dimen>
 
-    <dimen name="sizePrecioTexto">20sp</dimen>
-    <dimen name="sizeBotonTiendaTexto">16sp</dimen>
+    <dimen name="sizeTextoTienda">10sp</dimen>
+    <dimen name="sizePrecioTexto">16sp</dimen>
+    <dimen name="sizeBotonTiendaTexto">12sp</dimen>
 
     <dimen name="sizeConsultaPedidoTitulo">16sp</dimen>
 
