@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/btnAgregar2"
+        android:layout_width="79dp"
+        android:layout_height="14dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/colorBotonTiendaFondo"
+        android:fontFamily="@font/font_boton_tienda_texto"
+        android:text="Calificar"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBotonTiendaTexto"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEstadoMPed" />
+
+    <TextView
+        android:id="@+id/txtEstadoMPed"
+        android:layout_width="80dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:text="Entregado"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorTextoLibre"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPedidoMPed"
+        android:layout_width="85dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:text="202014003"
+        android:textColor="@color/colorTextoLibre"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/titulo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtFechaMPed"
+        android:layout_width="85dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:text="dd/mm/yyyy hh:mi"
+        android:textColor="@color/colorTextoLibre"
+        android:textSize="8dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/txtPedidoMPed"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtDireccionMPed"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:text="dirección...."
+        android:textColor="@color/colorTextoLibre"
+        android:textSize="8dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo" />
+
+    <TextView
+        android:id="@+id/titulo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:text="Entregado por"
+        android:textColor="@color/colorTextoLibre"
+        android:textSize="8dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/txtDireccionMPed" />
+
+    <TextView
+        android:id="@+id/txtDespachadorMPed"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:text="nombre..."
+        android:textColor="@color/colorTextoLibre"
+        android:textSize="8dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/titulo2" />
+
+    <TextView
+        android:id="@+id/txtTotalLineaMPed"
+        android:layout_width="80dp"
+        android:layout_height="14dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorTextoLibre"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        tools:text="S/. 30.00" />
+
+    <TextView
+        android:id="@+id/txtSubTotalMPed"
+        android:layout_width="80dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorTextoLibre"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        tools:text="S/. 30.00" />
+
+    <TextView
+        android:id="@+id/txtIGVMPed"
+        android:layout_width="80dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorTextoLibre"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSubTotalMPed"
+        tools:text="S/. 30.00" />
+
+    <TextView
+        android:id="@+id/txtCantidadMPed"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:textAlignment="center"
+        android:textColor="@color/colorTextoLibre"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        tools:text="1" />
+
+    <TextView
+        android:id="@+id/txtProductoMPed"
+        android:layout_width="153dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorTextoLibre"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/txtCantidadMPed"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        tools:text="producto..." />
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:text="Pedido #"
+        android:textColor="@color/colorTextoLibre"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTotalMPed"
+        android:layout_width="80dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:text="S/. 30.00"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorPrecioTexto"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtIGVMPed" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="26dp"
+        android:layout_height="27dp"
+
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDireccionMPed"
+        app:srcCompat="@drawable/fotopersona" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="83dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="121dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:text="Sub Total"
+        android:textSize="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:text="Total"
+        android:textSize="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/font_texto_pedido"
+        android:text="IGV"
+        android:textSize="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

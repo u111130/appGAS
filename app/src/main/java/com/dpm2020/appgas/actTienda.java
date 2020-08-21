@@ -56,7 +56,7 @@ public class actTienda extends AppCompatActivity {
             productos.add(datosProducto);
         }
 
-        lstProductos = findViewById((R.id.lstPedido));
+        lstProductos = findViewById((R.id.lstMisPedidos));
         SimpleAdapter adapter2 = new SimpleAdapter(this, productos, R.layout.tienda_fila,from, to);
         lstProductos.setAdapter(adapter2);
 

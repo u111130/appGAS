@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtProductoPed" />
 
     <TextView
-        android:id="@+id/txtTotalPed"
+        android:id="@+id/txtTotalMPed"
         android:layout_width="67dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -98,7 +98,7 @@
         android:layout_marginEnd="30dp"
         android:background="#00FFFFFF"
         android:tint="@color/colorBotonTiendaFondo"
-        app:layout_constraintEnd_toStartOf="@+id/txtTotalPed"
+        app:layout_constraintEnd_toStartOf="@+id/txtTotalMPed"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_add_circle_24" />
 

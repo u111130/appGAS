@@ -19,7 +19,7 @@ public class actPedido extends AppCompatActivity {
 
     ListView lstPedido;
     String[] from = new String[] {"Producto","Precio","Cantidad","Total"};
-    int[] to= new int[] {R.id.txtProductoPed, R.id.txtPrecioPed, R.id.txtCantidadPed, R.id.txtTotalPed};
+    int[] to= new int[] {R.id.txtProductoPed, R.id.txtPrecioPed, R.id.txtCantidadPed, R.id.txtTotalMPed};
 
 
     @Override
@@ -39,7 +39,7 @@ public class actPedido extends AppCompatActivity {
 
         ArrayList<String[]> lista = new ArrayList<>();
         String[] prod1 = {"Envasado 5kg","S/. 20.00","1","S/. 20.00","1"};
-        String[] prod2 = {"Envasado 10kg","S/. 30.00","1","S/. 30.00","1"};
+        String[] prod2 = {"Envasado 10kg","S/. 30.00","1","S/. 30.00","2"};
 
         lista.add(prod1);
         lista.add(prod2);
@@ -56,7 +56,7 @@ public class actPedido extends AppCompatActivity {
             pedidos.add(datosPedido);
         }
 
-        lstPedido= findViewById((R.id.lstPedido));
+        lstPedido= findViewById((R.id.lstMisPedidos));
         SimpleAdapter adapter2 = new SimpleAdapter(this, pedidos, R.layout.pedido_fila,from, to);
         lstPedido.setAdapter(adapter2);
 
