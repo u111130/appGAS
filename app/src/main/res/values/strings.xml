@@ -7,6 +7,10 @@
     <string name="title_activity_act_direccion">Map</string>
     <string name="title_activity_login_gas">LoginGas</string>
     <string name="prompt_email">Email</string>
+    <string name="prompt_numerotarjeta">Número de Tarjeta</string>
+    <string name="prompt_titulartarjeta">Titular de la Tarjeta</string>
+    <string name="prompt_vencimientotarjeta">MM / YY</string>
+    <string name="prompt_codigotarjeta">CVC</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
