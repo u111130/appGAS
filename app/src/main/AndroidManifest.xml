@@ -9,25 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".actPedido">
+        <activity android:name=".OnboardingActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".actTienda">
-
-        </activity>
+        <activity android:name=".actTienda"></activity>
         <activity
             android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
-        <activity android:name=".actDireccion" >
-
-        </activity>
-
-        <activity android:name=".MainActivity" />
+            android:label="@string/title_activity_login" />
+        <activity android:name=".actDireccion"></activity>
+        <activity android:name=".actPedido" />
         <activity android:name=".ActListView" />
         <activity android:name=".ActPrincipal" />
         <activity android:name=".ActRadioCheck" />
