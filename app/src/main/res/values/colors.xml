@@ -25,4 +25,6 @@
     <color name="colorBotonTiendaTexto">#FFFFFF</color>
     <color name="colorBotonTiendaFondo">#00C16A</color>
 
+    <color name="colorBorder">#D2D2D2</color>
+
 </resources>
