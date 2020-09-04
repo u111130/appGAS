@@ -2,7 +2,6 @@ package com.dpm2020.appgas;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,25 +19,19 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.dpm2020.appgas.data.TuGasPreference;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class actTienda extends AppCompatActivity {
+public class TiendaActivity extends AppCompatActivity {
     private final String URL_LIST_PRODUCTS = "https://apigas.komanda.pe/orders/product";
     private TuGasPreference mTuGasPreference;
-
-    public actTienda(Context context) {
-        this.mTuGasPreference =new TuGasPreference(context);
-    }
 
     Spinner spDirecciones;
     String direcciones[] = {"Jr San Martin 345 Miraflores", "Calle 4 156, San Isidro"};
@@ -50,9 +43,11 @@ public class actTienda extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.mTuGasPreference = new TuGasPreference(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_tienda);
         asignarReferencias();
+        wsGetProducts();
     }
 
     private void wsGetProducts () {
@@ -60,12 +55,11 @@ public class actTienda extends AppCompatActivity {
         EditText usernameEditText = findViewById(R.id.txtUsername);
         EditText passwordEditText = findViewById(R.id.password);
 
-
+        final String token = mTuGasPreference.getToken();
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, URL_LIST_PRODUCTS, null, new Response.Listener<JSONArray>() {
             public Map<String, String> getHeaders() {
                 Map<String, String> header = new HashMap<String, String>();
-                String token = prefs.getString("token", null);
                 Log.i("TUGAS", token);
                 header.put("Authorization", "JWT "+ token);
                 return header;
@@ -84,7 +78,7 @@ public class actTienda extends AppCompatActivity {
                 editor.commit();
 
                  */
-                startActivity(new Intent(getApplicationContext(), actTienda.class));
+                startActivity(new Intent(getApplicationContext(), TiendaActivity.class));
             }
         }, new Response.ErrorListener() {
             @Override
