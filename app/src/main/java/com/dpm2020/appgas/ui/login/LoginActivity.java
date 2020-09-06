@@ -1,46 +1,49 @@
 package com.dpm2020.appgas.ui.login;
 
-import android.app.Activity;
-
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
+import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dpm2020.appgas.Onboarding1Activity;
-import com.dpm2020.appgas.Onboarding2Activity;
-import com.dpm2020.appgas.Onboarding3Activity;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.dpm2020.appgas.R;
-import com.dpm2020.appgas.actTienda;
+import com.dpm2020.appgas.TiendaActivity;
+import com.dpm2020.appgas.data.TuGasPreference;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+    private final String URL_LOGIN = "https://apigas.komanda.pe/auth/token/auth";
+    private TuGasPreference mTuGasPreference;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        this.mTuGasPreference = new TuGasPreference(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = findViewById(R.id.txtNumeroTarjeta);
+        final EditText usernameEditText = findViewById(R.id.txtUsername);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.btnLogin);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
@@ -137,12 +140,20 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 Toast.makeText(getApplicationContext(), "clic", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), actTienda.class));
+                /*
+                startActivity(new Intent(getApplicationContext(), TiendaActivity.class));
+                */
 
                 loadingProgressBar.setVisibility(View.VISIBLE);
+
+                wsLogin();
+                /*
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
+                 */
             }
         });
     }
@@ -157,4 +168,47 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
     */
+
+    private void loadingHide() {
+        ProgressBar loadingProgressBar = findViewById(R.id.loading);
+        loadingProgressBar.setVisibility(View.INVISIBLE);
+    }
+
+    private void wsLogin() {
+        JSONObject jsonBody = new JSONObject();
+        EditText usernameEditText = findViewById(R.id.txtUsername);
+        EditText passwordEditText = findViewById(R.id.password);
+
+        try {
+            jsonBody.put("username", usernameEditText.getText());
+            jsonBody.put("password", passwordEditText.getText());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        final String requestBody = jsonBody.toString();
+
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, URL_LOGIN, jsonBody, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                loadingHide();
+                // JSONObject jsonObject = JSONObject(response);
+                Log.i("TUGAS", response.toString());
+                try {
+                    mTuGasPreference.setToken(response.getString("token"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                startActivity(new Intent(getApplicationContext(), TiendaActivity.class));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                loadingHide();
+                Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
 }
