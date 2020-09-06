@@ -64,5 +64,6 @@ public class actTienda extends AppCompatActivity {
 
     public void AgregarCarrito (View view){
         Toast.makeText(this, "agregando...", Toast.LENGTH_LONG).show();
+        // TODO: agregar el producto al carrito
     }
 }

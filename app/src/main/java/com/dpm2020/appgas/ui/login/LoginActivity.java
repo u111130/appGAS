@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -22,7 +23,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dpm2020.appgas.Onboarding1Activity;
+import com.dpm2020.appgas.Onboarding2Activity;
+import com.dpm2020.appgas.Onboarding3Activity;
 import com.dpm2020.appgas.R;
+import com.dpm2020.appgas.actTienda;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,16 +42,36 @@ public class LoginActivity extends AppCompatActivity {
 
         final EditText usernameEditText = findViewById(R.id.txtNumeroTarjeta);
         final EditText passwordEditText = findViewById(R.id.password);
-        final Button loginButton = findViewById(R.id.btnPagar);
+        final Button loginButton = findViewById(R.id.btnLogin);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
+        final TextView btn_register = findViewById(R.id.textView13);
+        final TextView btn_register2 = findViewById(R.id.textView14);
+
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: redirect
+                //startActivity(new Intent(getApplicationContext(), RegistroActivity.class));
+            }
+        });
+
+        btn_register2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: redirect
+                //startActivity(new Intent(getApplicationContext(), RegistroActivity.class));
+            }
+        });
+
+        /*
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
             public void onChanged(@Nullable LoginFormState loginFormState) {
                 if (loginFormState == null) {
                     return;
                 }
-                loginButton.setEnabled(loginFormState.isDataValid());
+                //loginButton.setEnabled(loginFormState.isDataValid());
                 if (loginFormState.getUsernameError() != null) {
                     usernameEditText.setError(getString(loginFormState.getUsernameError()));
                 }
@@ -75,7 +100,9 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
+        */
 
+        /*
         TextWatcher afterTextChangedListener = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -106,17 +133,20 @@ public class LoginActivity extends AppCompatActivity {
                 return false;
             }
         });
-
+        */
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "clic", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), actTienda.class));
+
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
             }
         });
     }
-
+    /*
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
@@ -126,4 +156,5 @@ public class LoginActivity extends AppCompatActivity {
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
+    */
 }

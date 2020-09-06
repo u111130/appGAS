@@ -9,22 +9,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".actCuentaNueva"></activity>
-        <activity android:name=".actMisPedidos"></activity>
-        <activity android:name=".activity_act_metodo_pago"></activity>
-        <activity android:name=".actPedido" />
-        <activity android:name=".actTienda" />
+
         <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login">
+            android:name=".MainActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Onboarding1Activity" />
+        <activity android:name=".Onboarding2Activity" />
+        <activity android:name=".Onboarding3Activity" />
+        <activity android:name=".actMisPedidos" />
+        <activity android:name=".activity_act_metodo_pago" />
+        <activity android:name=".actPedido" />
+        <activity android:name=".actTienda" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/title_activity_login" />
         <activity android:name=".actDireccion" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".ActListView" />
         <activity android:name=".ActPrincipal" />
         <activity android:name=".ActRadioCheck" />
