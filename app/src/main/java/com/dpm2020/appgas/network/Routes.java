@@ -8,4 +8,6 @@ public interface Routes {
     String URL_AUTH_VERIFY = URL_BASE + "/auth/token/auth/verify";
 
     String URL_PRODUCTS_LIST = URL_BASE + "/orders/product";
+    String URL_ADDRESS_LIST = URL_BASE + "/users/address";
+
 }

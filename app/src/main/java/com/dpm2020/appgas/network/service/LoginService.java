@@ -23,7 +23,7 @@ public class LoginService extends BaseService {
     }
 
     public void login(String username, String password) {
-        activity.showLoading();
+        showLoading();
         JSONObject jsonBody = new JSONObject();
         try {
             jsonBody.put("username", username);
@@ -35,7 +35,7 @@ public class LoginService extends BaseService {
         apiClient.addToRequestQueue(new JsonObjectRequest(Request.Method.POST, Routes.URL_AUTH_LOGIN, jsonBody, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                activity.hideLoading();
+                hideLoading();
                 Log.i("TUGAS", response.toString());
                 try {
                     mTuGasPreference.setToken(response.getString("token"));
@@ -49,14 +49,14 @@ public class LoginService extends BaseService {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                activity.hideLoading();
+                hideLoading();
                 showMessage("Usuario o contraseña incorrectos");
             }
         }));
     }
 
     public void verify() {
-        activity.showLoading();
+        showLoading();
 
         final String token = mTuGasPreference.getToken();
         JSONObject jsonBody = new JSONObject();
@@ -69,7 +69,7 @@ public class LoginService extends BaseService {
         apiClient.addToRequestQueue(new JsonObjectRequest(Request.Method.POST, Routes.URL_AUTH_VERIFY, jsonBody, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                activity.hideLoading();
+                hideLoading();
                 Log.i("TUGAS", response.toString());
                 try {
                     mTuGasPreference.setToken(response.getString("token"));
@@ -83,10 +83,22 @@ public class LoginService extends BaseService {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                activity.hideLoading();
+                hideLoading();
                 logout();
             }
         }));
+    }
+
+    public void showLoading() {
+        this.vShowLoading();
+        activity.showLoading();
+    }
+
+    public void hideLoading() {
+        this.vHideLoading();
+        if(this.start == this.end) {
+            activity.hideLoading();
+        }
     }
 
     public void logout(){

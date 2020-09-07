@@ -23,11 +23,8 @@ public class TiendaActivity extends BaseActivity {
     TiendaService services;
 
     Spinner spDirecciones;
-    String direcciones[] = {"Jr San Martin 345 Miraflores", "Calle 4 156, San Isidro"};
-
     ListView lstProductos;
-    String[] from = new String[] {"Producto","Precio","Descripcion"};
-    int[] to= new int[] {R.id.txtProducto, R.id.txtPrecio, R.id.txtDescripcion};
+
 
 
     @Override
@@ -39,43 +36,79 @@ public class TiendaActivity extends BaseActivity {
 
         setContentView(R.layout.activity_tienda);
 
+        spDirecciones = findViewById(R.id.spDireccionPed);
+        lstProductos = findViewById((R.id.lstMisPedidos));
 
         final TextView title = findViewById(R.id.textUsuarioTitulo);
-        title.setText("Hola "+ mTuGasPreference.getUserName());
+        title.setText(getSaludo());
+
+        getInfo();
+    }
+
+    public void getInfo() {
+        services.getAddress();
         services.getProducts();
     }
 
-    public void asignarReferencias(JSONArray products) {
-        // TODO: GUARDAR PRODUCTOS EN BASE DE DATOS LOCAL
+    public void setAddress(JSONArray data) {
+        // TODO: GUARDAR DIRECCIONES EN BASE DE DATOS LOCAL
 
-        spDirecciones = findViewById(R.id.spDireccionPed);
-        ArrayAdapter adapter = new ArrayAdapter (this, android.R.layout.simple_list_item_activated_1, direcciones);
-        spDirecciones.setAdapter(adapter);
-
-
-
-        ArrayList<HashMap<String,String>> productos = new ArrayList<>();
-        for (int i=0; i<products.length(); i++)
+        ArrayList<String> direcciones = new ArrayList<String>();
+        ArrayList<HashMap<String,String>> result = new ArrayList<>();
+        for (int i = 0; i < data.length(); i++)
         {
-            HashMap<String,String> datosProducto = new HashMap<>();
-            try {
-                JSONObject product = products.getJSONObject(i);
 
-                datosProducto.put("Producto", product.getString("name"));
-                datosProducto.put("Precio", product.getString("price"));
-                datosProducto.put("Descripcion", product.getString("description"));
-                datosProducto.put("Id", product.getString("id"));
+            try {
+                JSONObject item = data.getJSONObject(i);
+                /*
+                HashMap<String,String> temp = new HashMap<>();
+                temp.put("id", item.getString("id"));
+                temp.put("name", item.getString("name"));
+                temp.put("inside", item.getString("inside"));
+                temp.put("latitude", item.getString("latitude"));
+                temp.put("longitude", item.getString("longitude"));
+                // temp.put("member_id", item.getString("member_id"));
+
+                result.add(temp);
+                */
+                direcciones.add(i, item.getString("name"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            productos.add(datosProducto);
         }
 
-        lstProductos = findViewById((R.id.lstMisPedidos));
-        SimpleAdapter adapter2 = new SimpleAdapter(this, productos, R.layout.tienda_fila,from, to);
-        lstProductos.setAdapter(adapter2);
+        ArrayAdapter adapter = new ArrayAdapter (this, android.R.layout.simple_list_item_activated_1, direcciones);
+        spDirecciones.setAdapter(adapter);
+    }
 
+    public void setProducts(JSONArray data) {
+        // TODO: GUARDAR PRODUCTOS EN BASE DE DATOS LOCAL
+
+        ArrayList<HashMap<String,String>> result = new ArrayList<>();
+        for (int i = 0; i < data.length(); i++)
+        {
+            try {
+                JSONObject item = data.getJSONObject(i);
+
+                HashMap<String,String> temp = new HashMap<>();
+                temp.put("Producto", item.getString("name"));
+                temp.put("Precio", item.getString("price"));
+                temp.put("Descripcion", item.getString("description"));
+                temp.put("Id", item.getString("id"));
+
+                result.add(temp);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        String[] from = new String[] {"Producto","Precio","Descripcion"};
+        int[] to = new int[] {R.id.txtProducto, R.id.txtPrecio, R.id.txtDescripcion};
+
+        SimpleAdapter adapter2 = new SimpleAdapter(this, result, R.layout.tienda_fila,from, to);
+        lstProductos.setAdapter(adapter2);
     }
 
     public void AgregarCarrito (View view){

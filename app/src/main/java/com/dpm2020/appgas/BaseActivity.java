@@ -11,11 +11,17 @@ import com.dpm2020.appgas.data.TuGasPreference;
 public class BaseActivity extends AppCompatActivity {
     public TuGasPreference mTuGasPreference;
     private ProgressDialog progressDialog;
+    private int start = 0;
+    private int end = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.mTuGasPreference = new TuGasPreference(getApplicationContext());
+    }
+
+    public String getSaludo() {
+        return "Hola "+ mTuGasPreference.getUserName();
     }
 
     public void showLoading() {

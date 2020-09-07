@@ -26,20 +26,20 @@ public class TiendaService extends BaseService {
     }
 
     public void getProducts () {
-        activity.showLoading();
+        showLoading();
         final String token = mTuGasPreference.getToken();
 
         apiClient.addToRequestQueue(new JsonArrayRequest(Request.Method.GET, Routes.URL_PRODUCTS_LIST, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                activity.hideLoading();
-                Log.i("TUGAS", response.toString());
-                activity.asignarReferencias(response);
+                hideLoading();
+                Log.i("TUGAS PRODUCTS", response.toString());
+                activity.setProducts(response);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                activity.hideLoading();
+                hideLoading();
                 NetworkResponse networkResponse =  error.networkResponse;
 
                 if (networkResponse.statusCode == 401) {
@@ -57,6 +57,52 @@ public class TiendaService extends BaseService {
                 return params;
             }
         });
+    }
+
+    public void getAddress () {
+        showLoading();
+        final String token = mTuGasPreference.getToken();
+
+        apiClient.addToRequestQueue(new JsonArrayRequest(Request.Method.GET, Routes.URL_ADDRESS_LIST, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                hideLoading();
+                Log.i("TUGAS ADDRESS", response.toString());
+                activity.setAddress(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                hideLoading();
+                NetworkResponse networkResponse =  error.networkResponse;
+
+                if (networkResponse.statusCode == 401) {
+                    logout();
+                } else {
+                    showMessage(error.getMessage());
+                }
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/json; charset=UTF-8");
+                params.put("Authorization", "JWT "+ token);
+                return params;
+            }
+        });
+    }
+
+    public void showLoading() {
+        this.vShowLoading();
+        activity.showLoading();
+    }
+
+    public void hideLoading() {
+        this.vHideLoading();
+        if(this.start == this.end) {
+            activity.hideLoading();
+        }
     }
 
     public void logout(){
