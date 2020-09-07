@@ -4,18 +4,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Onboarding1Activity extends AppCompatActivity {
+import com.dpm2020.appgas.ui.login.LoginActivity;
+
+public class Onboarding1Activity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /* TODO: sincronizacion inicial */
+        super.onCreate(savedInstanceState);
+
+        Boolean noShowOnboarding = mTuGasPreference.getOnBoarding();
+        Log.i("TUGAS", noShowOnboarding ? "NO SHOW" : "SHOW");
+        if (noShowOnboarding) {
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        }
         setTheme(R.style.AppTheme);
 
-        super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_onboarding1);
 
         final TextView nextButton = findViewById(R.id.btn_next);
