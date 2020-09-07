@@ -61,6 +61,7 @@ public class TiendaService extends BaseService {
 
     public void logout(){
         showMessage("Sesión expirada.");
+        mTuGasPreference.clear();
         activity.startActivity(new Intent(activity.getApplicationContext(), LoginActivity.class));
     }
 

@@ -24,10 +24,13 @@ public class LoginActivity extends BaseActivity {
         services = new LoginService(activity);
 
         Boolean noShowOnboarding = mTuGasPreference.getOnBoarding();
-        Log.i("TUGAS", noShowOnboarding ? "NO SHOW" : "SHOW");
         mTuGasPreference.setOnBoarding(true);
-        noShowOnboarding = mTuGasPreference.getOnBoarding();
-        Log.i("TUGAS", noShowOnboarding ? "NO SHOW" : "SHOW");
+
+        String token = mTuGasPreference.getToken();
+        if (!token.equals("")) {
+            LoginService loginServices = new LoginService(this);
+            loginServices.verify();
+        }
 
         setContentView(R.layout.activity_login);
 

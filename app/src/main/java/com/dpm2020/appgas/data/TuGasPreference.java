@@ -92,4 +92,10 @@ public class TuGasPreference  {
         editor.putLong(psKey, psValue);
         editor.apply();
     }
+
+    public void clear() {
+        SharedPreferences.Editor editor = getEditoSharedPreference();
+        editor.clear();
+        editor.apply();
+    }
 }

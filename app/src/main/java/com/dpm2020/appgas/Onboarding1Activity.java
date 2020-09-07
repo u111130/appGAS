@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.dpm2020.appgas.network.service.LoginService;
 import com.dpm2020.appgas.ui.login.LoginActivity;
 
 public class Onboarding1Activity extends BaseActivity {
@@ -18,12 +19,11 @@ public class Onboarding1Activity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         Boolean noShowOnboarding = mTuGasPreference.getOnBoarding();
-        Log.i("TUGAS", noShowOnboarding ? "NO SHOW" : "SHOW");
+
         if (noShowOnboarding) {
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         }
         setTheme(R.style.AppTheme);
-
 
         setContentView(R.layout.activity_onboarding1);
 

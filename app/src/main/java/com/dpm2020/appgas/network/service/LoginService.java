@@ -32,7 +32,7 @@ public class LoginService extends BaseService {
             e.printStackTrace();
         }
 
-        apiClient.addToRequestQueue(new JsonObjectRequest(Request.Method.POST, Routes.URL_LOGIN, jsonBody, new Response.Listener<JSONObject>() {
+        apiClient.addToRequestQueue(new JsonObjectRequest(Request.Method.POST, Routes.URL_AUTH_LOGIN, jsonBody, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 activity.hideLoading();
@@ -53,5 +53,45 @@ public class LoginService extends BaseService {
                 showMessage("Usuario o contraseña incorrectos");
             }
         }));
+    }
+
+    public void verify() {
+        activity.showLoading();
+
+        final String token = mTuGasPreference.getToken();
+        JSONObject jsonBody = new JSONObject();
+        try {
+            jsonBody.put("token", token);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        apiClient.addToRequestQueue(new JsonObjectRequest(Request.Method.POST, Routes.URL_AUTH_VERIFY, jsonBody, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                activity.hideLoading();
+                Log.i("TUGAS", response.toString());
+                try {
+                    mTuGasPreference.setToken(response.getString("token"));
+                    mTuGasPreference.setUserId(response.getJSONObject("user").getString("name"));
+                    mTuGasPreference.setUserName(response.getJSONObject("user").getString("name"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                activity.startActivity(new Intent(activity.getApplicationContext(), TiendaActivity.class));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                activity.hideLoading();
+                logout();
+            }
+        }));
+    }
+
+    public void logout(){
+        showMessage("Sesión expirada.");
+        mTuGasPreference.clear();
+        activity.startActivity(new Intent(activity.getApplicationContext(), LoginActivity.class));
     }
 }
