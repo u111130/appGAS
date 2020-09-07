@@ -30,7 +30,7 @@
         <activity android:name=".actPedido" />
         <activity android:name=".TiendaActivity" />
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".actDireccion" />
         <activity android:name=".ActListView" />

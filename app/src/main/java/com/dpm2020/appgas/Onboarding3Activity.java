@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.dpm2020.appgas.ui.login.LoginActivity;
-
 public class Onboarding3Activity extends BaseActivity {
 
     @Override

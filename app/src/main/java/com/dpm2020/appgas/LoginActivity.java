@@ -1,15 +1,11 @@
-package com.dpm2020.appgas.ui.login;
+package com.dpm2020.appgas;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.dpm2020.appgas.BaseActivity;
-import com.dpm2020.appgas.R;
 import com.dpm2020.appgas.network.service.LoginService;
 
 public class LoginActivity extends BaseActivity {
@@ -37,7 +33,6 @@ public class LoginActivity extends BaseActivity {
         final EditText usernameEditText = findViewById(R.id.txtUsername);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.btnLogin);
-        final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
         final TextView btn_register = findViewById(R.id.textView13);
         final TextView btn_register2 = findViewById(R.id.textView14);

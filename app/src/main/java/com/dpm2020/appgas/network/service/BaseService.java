@@ -1,12 +1,10 @@
 package com.dpm2020.appgas.network.service;
 
 import android.content.Context;
-import android.content.Intent;
 import android.widget.Toast;
 
 import com.dpm2020.appgas.data.TuGasPreference;
 import com.dpm2020.appgas.network.ApiSingleton;
-import com.dpm2020.appgas.ui.login.LoginActivity;
 
 public class BaseService {
     protected TuGasPreference mTuGasPreference;

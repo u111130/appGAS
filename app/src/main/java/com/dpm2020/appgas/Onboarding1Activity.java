@@ -1,16 +1,9 @@
 package com.dpm2020.appgas;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-
-import com.dpm2020.appgas.network.service.LoginService;
-import com.dpm2020.appgas.ui.login.LoginActivity;
 
 public class Onboarding1Activity extends BaseActivity {
 

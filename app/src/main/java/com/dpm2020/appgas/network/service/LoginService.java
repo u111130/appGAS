@@ -9,7 +9,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.dpm2020.appgas.TiendaActivity;
 import com.dpm2020.appgas.network.Routes;
-import com.dpm2020.appgas.ui.login.LoginActivity;
+import com.dpm2020.appgas.LoginActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
