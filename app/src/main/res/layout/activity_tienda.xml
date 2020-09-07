@@ -42,7 +42,6 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/font_usuario_titulo"
-        android:text="Hola Claudio"
         android:textColor="@color/colorUsuarioTitulo"
         android:textSize="@dimen/sizeUsuarioTitulo"
         app:layout_constraintStart_toStartOf="parent"
