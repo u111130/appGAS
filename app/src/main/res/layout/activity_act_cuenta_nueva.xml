@@ -7,148 +7,120 @@
     tools:context=".RegistroActivity">
 
     <Button
-        android:id="@+id/btnLogin2"
+        android:id="@+id/btnRegistrar"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:layout_gravity="start"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="54dp"
         android:background="@drawable/button"
-        android:text="@string/action_sign_in"
+        android:text="@string/title_button_registrar"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNumeroTarjeta9"
-        app:layout_constraintVertical_bias="0.2" />
-
-    <EditText
-        android:id="@+id/txtNumeroTarjeta9"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-
-        android:layout_gravity="center"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="58dp"
-        android:background="@drawable/input_rounded"
-        android:elevation="3dp"
-        android:hint="@string/prompt_numerotarjeta"
-        android:inputType="number"
-        android:padding="10dip"
-        android:selectAllOnFocus="true"
-        android:text="Telefono"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNumeroTarjeta8" />
-
-    <EditText
-        android:id="@+id/txtNumeroTarjeta8"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-
-        android:layout_gravity="center"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="58dp"
-        android:background="@drawable/input_rounded"
-        android:elevation="3dp"
-        android:hint="@string/prompt_numerotarjeta"
-        android:inputType="number"
-        android:padding="10dip"
-        android:selectAllOnFocus="true"
-        android:text="Correo electronico"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNumeroTarjeta7" />
-
-    <EditText
-        android:id="@+id/txtNumeroTarjeta7"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-
-        android:layout_gravity="center"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="58dp"
-        android:background="@drawable/input_rounded"
-        android:elevation="3dp"
-        android:hint="@string/prompt_numerotarjeta"
-        android:inputType="number"
-        android:padding="10dip"
-        android:selectAllOnFocus="true"
-        android:text="Apellidos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNumeroTarjeta6" />
+        app:layout_constraintTop_toBottomOf="@+id/txtConfirmaPassword" />
 
     <EditText
-        android:id="@+id/txtNumeroTarjeta6"
+        android:id="@+id/txtTelefono"
         android:layout_width="match_parent"
         android:layout_height="40dp"
 
         android:layout_gravity="center"
         android:layout_marginStart="58dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="58dp"
         android:background="@drawable/input_rounded"
         android:elevation="3dp"
-        android:hint="@string/prompt_numerotarjeta"
-        android:inputType="number"
+        android:hint="Telefono"
+        android:inputType="phone"
         android:padding="10dip"
         android:selectAllOnFocus="true"
-        android:text="Nombres"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNumeroTarjeta4" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCorreo" />
 
     <EditText
-        android:id="@+id/txtNumeroTarjeta5"
+        android:id="@+id/txtCorreo"
         android:layout_width="match_parent"
         android:layout_height="40dp"
 
         android:layout_gravity="center"
         android:layout_marginStart="58dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="58dp"
         android:background="@drawable/input_rounded"
         android:elevation="3dp"
-        android:hint="@string/prompt_numerotarjeta"
-        android:inputType="number"
+        android:hint="Correo electronico"
+        android:inputType="textEmailAddress"
         android:padding="10dip"
         android:selectAllOnFocus="true"
-        android:text="Tipo documento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toBottomOf="@+id/txtApellidos" />
 
     <EditText
-        android:id="@+id/txtNumeroTarjeta4"
+        android:id="@+id/txtApellidos"
         android:layout_width="match_parent"
         android:layout_height="40dp"
 
         android:layout_gravity="center"
         android:layout_marginStart="58dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="58dp"
         android:background="@drawable/input_rounded"
         android:elevation="3dp"
-        android:hint="@string/prompt_numerotarjeta"
-        android:inputType="number"
+        android:hint="Apellidos"
+        android:inputType="text"
         android:padding="10dip"
         android:selectAllOnFocus="true"
-        android:text="Numero de documento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombres" />
+
+    <EditText
+        android:id="@+id/txtNombres"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+
+        android:layout_gravity="center"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="58dp"
+        android:background="@drawable/input_rounded"
+        android:elevation="3dp"
+        android:hint="Nombres"
+        android:inputType="text"
+        android:padding="10dip"
+        android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNumeroTarjeta5" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNumeroDocumento" />
+
+    <EditText
+        android:id="@+id/txtNumeroDocumento"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+
+        android:layout_gravity="center"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="58dp"
+        android:background="@drawable/input_rounded"
+        android:elevation="3dp"
+        android:hint="Numero de documento"
+        android:inputType="text"
+        android:padding="10dip"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spTipoDocumento" />
 
     <TextView
         android:id="@+id/textView23"
@@ -168,10 +140,49 @@
         android:id="@+id/imageView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_tu_gas" />
+
+    <Spinner
+        android:id="@+id/spTipoDocumento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="58dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="58dp"
+        android:ems="10"
+        android:hint="Ingrese Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTelefono" />
+
+    <EditText
+        android:id="@+id/txtConfirmaPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="58dp"
+        android:ems="10"
+        android:hint="Confirme Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
