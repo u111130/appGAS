@@ -12,4 +12,6 @@ public interface Routes {
 
     String URL_REGISTER_USER = URL_BASE + "/users/register";
 
+    String URL_REGISTER_ADDRESS = URL_BASE + "/users/address";
+
 }
