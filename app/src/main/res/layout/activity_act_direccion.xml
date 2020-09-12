@@ -50,6 +50,8 @@
         android:id="@+id/btnRegistraDir"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginBottom="40dp"
         android:background="@color/colorBotonFondo"
         android:fontFamily="@font/font_boton_texto"
@@ -58,8 +60,23 @@
         android:textColor="@color/colorBotonTexto"
         android:textSize="@dimen/sizeBotonTexto"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/colorBotonFondo"
+        android:fontFamily="@font/font_boton_texto"
+        android:text="Cancelar"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBotonTexto"
+        android:textSize="@dimen/sizeBotonTexto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <fragment
         android:id="@+id/fragment"

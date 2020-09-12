@@ -35,6 +35,7 @@ public class DireccionActivity extends BaseActivity {
     TextView txtMensaje, txtInterior;
     SearchView sv_direccion;
     Button btnRegistraDir;
+    Button btnCancelar;
 
     LatLng latLng;
     DireccionService service;
@@ -51,6 +52,7 @@ public class DireccionActivity extends BaseActivity {
 
         setContentView(R.layout.activity_act_direccion);
         asignarReferencias();
+
     }
 
     private void asignarReferencias() {
@@ -58,6 +60,9 @@ public class DireccionActivity extends BaseActivity {
         txtInterior = findViewById(R.id.txtInterior);
         sv_direccion = findViewById(R.id.sv_direccion);
         btnRegistraDir = findViewById(R.id.btnRegistraDir);
+        btnCancelar = findViewById(R.id.btnCancelar);
+
+        sv_direccion.onActionViewExpanded();
 
 
         if((ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) &&
@@ -67,6 +72,7 @@ public class DireccionActivity extends BaseActivity {
         }else{
             iniciarLocalizacion();
         }
+
 
     }
 
@@ -134,10 +140,27 @@ public class DireccionActivity extends BaseActivity {
 
                     service.registrar(nombre, interior, lat, lon);
 
+                    Intent intent = getIntent();
+                    if (intent != null) {
+                        setResult(1, intent);
+                    }
+                    finish();
+
                 }else{
                     muestraMensaje("Validación", msj);
                 }
 
+            }
+        });
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = getIntent();
+                if (intent != null) {
+                    setResult(0, intent);
+                }
+                finish();
             }
         });
 
@@ -148,6 +171,7 @@ public class DireccionActivity extends BaseActivity {
         if(requestCode == 1000){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 iniciarLocalizacion();
+
                 return;
             }
         }

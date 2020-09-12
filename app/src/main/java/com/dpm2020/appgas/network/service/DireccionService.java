@@ -71,7 +71,6 @@ public class DireccionService extends BaseService {
             }
         });
 
-
     }
 
     public void showLoading() {
@@ -83,7 +82,7 @@ public class DireccionService extends BaseService {
     public void hideLoading() {
         this.vHideLoading();
         if(this.start == this.end) {
-            //activity.hideLoading();
+            activity.hideLoading();
         }
     }
 
