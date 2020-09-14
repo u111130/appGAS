@@ -8,34 +8,34 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.dpm2020.appgas.PedidoActivity;
-import com.dpm2020.appgas.TiendaActivity;
-import com.dpm2020.appgas.network.Routes;
 import com.dpm2020.appgas.LoginActivity;
+import com.dpm2020.appgas.PedidoActivity;
+import com.dpm2020.appgas.network.Routes;
 
 import org.json.JSONArray;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class TiendaService extends BaseService {
-    private TiendaActivity activity;
+public class PedidoService extends BaseService {
+    private PedidoActivity activity;
 
-    public TiendaService(TiendaActivity activity) {
+    public PedidoService(PedidoActivity activity) {
         super(activity.getApplicationContext());
-        this.activity = (TiendaActivity) activity;
+        this.activity = (PedidoActivity) activity;
     }
 
-    public void getProducts () {
+    public void getOrder () {
         showLoading();
         final String token = mTuGasPreference.getToken();
+        // TODO: crear ruta para leer 1 sola ORDEN
 
-        apiClient.addToRequestQueue(new JsonArrayRequest(Request.Method.GET, Routes.URL_PRODUCTS_LIST, null, new Response.Listener<JSONArray>() {
+        apiClient.addToRequestQueue(new JsonArrayRequest(Request.Method.GET, Routes.URL_ORDER, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 hideLoading();
                 Log.i("TUGAS PRODUCTS", response.toString());
-                activity.setProducts(response);
+                activity.setOrder(response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -59,6 +59,11 @@ public class TiendaService extends BaseService {
             }
         });
     }
+
+    public void updateOrder () {
+
+    }
+
 
     public void getAddress () {
         showLoading();

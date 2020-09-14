@@ -9,23 +9,27 @@
 
     <TextView
         android:id="@+id/txtProductoPed"
-        android:layout_width="138dp"
+        android:layout_width="0dp"
         android:layout_height="17dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:fontFamily="@font/font_usuario_titulo"
         android:text="Producto"
         android:textColor="@color/colorTextoLibre"
         android:textSize="12dp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btnMenosPed"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtCantidadPed"
-        android:layout_width="25dp"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="5dp"
         android:fontFamily="@font/font_usuario_titulo"
         android:text="1"
@@ -33,14 +37,15 @@
         android:textColor="@color/colorTextoLibre"
         android:textSize="12dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+        app:layout_constraintEnd_toStartOf="@+id/btnMasPed"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtPrecioPed"
-        android:layout_width="71dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/font_usuario_titulo"
         android:text="precio"
@@ -53,12 +58,13 @@
 
     <TextView
         android:id="@+id/txtTotalMPed"
-        android:layout_width="67dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         android:fontFamily="@font/font_usuario_titulo"
-        android:text="S/. 30.00"
+        android:text="999.00"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrecioTexto"
         android:textSize="@dimen/sizeTextoPedido"
@@ -66,22 +72,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/txtTotalMPed2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:fontFamily="@font/font_usuario_titulo"
+        android:text="S/."
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorPrecioTexto"
+        android:textSize="@dimen/sizeTextoPedido"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txtTotalMPed"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="24dp"
         android:layout_height="39dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/balongas" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btnMenosPed"
         style="@android:style/Widget.Holo.ImageButton"
         android:layout_width="23dp"
         android:layout_height="22dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="5dp"
         android:background="#00FFFFFF"
         android:tint="@color/colorBotonTiendaFondo"
@@ -90,15 +113,16 @@
         app:srcCompat="@drawable/ic_baseline_remove_circle_24" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/btnMasPed"
         style="@android:style/Widget.Holo.ImageButton"
         android:layout_width="23dp"
         android:layout_height="22dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
         android:background="#00FFFFFF"
         android:tint="@color/colorBotonTiendaFondo"
-        app:layout_constraintEnd_toStartOf="@+id/txtTotalMPed"
+        app:layout_constraintEnd_toStartOf="@+id/txtTotalMPed2"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_add_circle_24" />
 
