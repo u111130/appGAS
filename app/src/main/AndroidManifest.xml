@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dpm2020.appgas">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,11 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".actCuentaNueva"></activity>
+        <activity android:name=".RegistroActivity">
+
+        </activity>
 
         <activity
             android:name=".MainActivity"
             android:theme="@style/SplashTheme">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,12 +35,14 @@
         <activity android:name=".Onboarding3Activity" />
         <activity android:name=".actMisPedidos" />
         <activity android:name=".activity_act_metodo_pago" />
-        <activity android:name=".actPedido" />
+        <activity android:name=".PedidoActivity" />
         <activity android:name=".TiendaActivity" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".actDireccion" />
+        <activity android:name=".DireccionActivity" >
+
+        </activity>
         <activity android:name=".ActListView" />
         <activity android:name=".ActPrincipal" />
         <activity android:name=".ActRadioCheck" />
@@ -40,7 +50,16 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCaeQhoX1wzt5uj7-o97P8qqY3gAuarVv0"/>
+
     </application>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+
 
 </manifest>

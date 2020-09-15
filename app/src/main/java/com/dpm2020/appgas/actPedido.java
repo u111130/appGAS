@@ -61,4 +61,30 @@ public class actPedido extends AppCompatActivity {
         lstPedido.setAdapter(adapter2);
 
     }
+
+    /*
+
+            btnAdd.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,Producto_mnto.class);
+
+                startActivityForResult(intent, 1);
+            }
+        });
+
+
+
+            @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        if(requestCode==1)
+        {
+            mostrarProductos();
+        }
+    }
+     */
+
 }

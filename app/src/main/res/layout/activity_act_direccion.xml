@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".actDireccion">
+    tools:context=".DireccionActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -16,17 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/fondo_barrasup" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="624dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/mapa" />
 
     <TextView
         android:id="@+id/textView"
@@ -57,67 +46,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textDireccion"
-        android:layout_width="match_parent"
-        android:layout_height="37dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@color/colorEntradaTextoFondo"
-        android:fontFamily="@font/font_entrada_texto"
-        android:hint="Buscar"
-        android:textColor="@color/colorEntradaTexto"
-        android:textSize="@dimen/sizeEntradaTexto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textDireccion2"
-        android:layout_width="match_parent"
-        android:layout_height="37dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/colorEntradaTextoFondo"
-        android:fontFamily="@font/font_entrada_texto"
-        android:hint="Número"
-        android:textColor="@color/colorEntradaTexto"
-        android:textSize="@dimen/sizeEntradaTexto"
-        app:layout_constraintBottom_toTopOf="@+id/textDireccion3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textDireccion3"
-        android:layout_width="match_parent"
-        android:layout_height="37dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="30dp"
-        android:background="@color/colorEntradaTextoFondo"
-        android:fontFamily="@font/font_entrada_texto"
-        android:hint="Departamento/Interior"
-        android:textColor="@color/colorEntradaTexto"
-        android:textSize="@dimen/sizeEntradaTexto"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegistraDir"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <Button
         android:id="@+id/btnRegistraDir"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginBottom="40dp"
         android:background="@color/colorBotonFondo"
         android:fontFamily="@font/font_boton_texto"
@@ -125,8 +59,79 @@
         android:textAllCaps="false"
         android:textColor="@color/colorBotonTexto"
         android:textSize="@dimen/sizeBotonTexto"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/colorBotonFondo"
+        android:fontFamily="@font/font_boton_texto"
+        android:text="Cancelar"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBotonTexto"
+        android:textSize="@dimen/sizeBotonTexto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.dpm2020.appgas.FragmentMaps"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtInterior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sv_direccion" />
+
+    <TextView
+        android:id="@+id/txtMensaje"
+        android:layout_width="100dp"
+        android:layout_height="69dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <SearchView
+        android:id="@+id/sv_direccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:queryHint="Ingrese dirección, distrito"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/txtInterior"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Interior/Dpto"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistraDir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
