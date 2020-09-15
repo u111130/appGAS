@@ -3,6 +3,7 @@ package com.dpm2020.appgas.network.service;
 import android.content.Intent;
 import android.util.Log;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -50,6 +51,10 @@ public class LoginService extends BaseService {
             @Override
             public void onErrorResponse(VolleyError error) {
                 hideLoading();
+
+                NetworkResponse networkResponse =  error.networkResponse;
+                // Log.i("TUGAS ERROR", networkResponse.toString());
+
                 showMessage("Usuario o contraseña incorrectos");
             }
         }));
@@ -84,6 +89,10 @@ public class LoginService extends BaseService {
             @Override
             public void onErrorResponse(VolleyError error) {
                 hideLoading();
+
+                NetworkResponse networkResponse =  error.networkResponse;
+                //Log.i("TUGAS ERROR", networkResponse.statusCode);
+
                 logout();
             }
         }));

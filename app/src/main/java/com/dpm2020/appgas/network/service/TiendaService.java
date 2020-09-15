@@ -41,7 +41,7 @@ public class TiendaService extends BaseService {
             public void onErrorResponse(VolleyError error) {
                 hideLoading();
                 NetworkResponse networkResponse =  error.networkResponse;
-
+                Log.i("TUGAS ERROR", networkResponse.toString());
                 if (networkResponse.statusCode == 401) {
                     logout();
                 } else {
@@ -75,6 +75,7 @@ public class TiendaService extends BaseService {
             public void onErrorResponse(VolleyError error) {
                 hideLoading();
                 NetworkResponse networkResponse =  error.networkResponse;
+                Log.i("TUGAS ERROR", networkResponse.toString());
 
                 if (networkResponse.statusCode == 401) {
                     logout();
