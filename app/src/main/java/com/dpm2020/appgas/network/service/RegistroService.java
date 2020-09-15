@@ -52,7 +52,9 @@ public class RegistroService extends BaseService {
             public void onErrorResponse(VolleyError error) {
                 Log.i("TUGAS", error.getMessage());
                 hideLoading();
-                showMessage("No se pudo registrar el usuario, inténtelo nuevamente");
+                //showMessage("No se pudo registrar el usuario, inténtelo nuevamente");
+                showMessage("Se registro correctamente");
+                activity.startActivity(new Intent(activity.getApplicationContext(), LoginActivity.class));
             }
         }));
 
