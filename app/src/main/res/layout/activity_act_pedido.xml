@@ -8,7 +8,7 @@
 
 
     <Button
-        android:id="@+id/btnRegistraDir3"
+        android:id="@+id/btnPagar"
         android:layout_width="120dp"
         android:layout_height="30dp"
         android:layout_marginBottom="30dp"
@@ -113,7 +113,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,10 +128,19 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="90dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegistraDir3"
+        app:layout_constraintBottom_toTopOf="@+id/btnPagarFinal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spDireccionPed" />
+
+    <ImageButton
+        android:id="@+id/btnDirecc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spDireccionPed"
+        app:srcCompat="@drawable/ic_baseline_add_circle_24"
+        tools:layout_editor_absoluteY="129dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,8 @@ public interface Routes {
 
     String URL_REGISTER_ADDRESS = URL_BASE + "/users/address";
 
+    String URL_CARD = URL_BASE + "/users/card";
+
     String URL_ORDER = URL_BASE + "/orders/order";
     String URL_ORDER_PRODUCT = URL_BASE + "/orders/product";
 }

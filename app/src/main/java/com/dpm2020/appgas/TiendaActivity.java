@@ -39,7 +39,8 @@ public class TiendaActivity extends BaseActivity {
     Order order = new Order();
     ArrayList<String> direccionID = new ArrayList<String>();
     ArrayList<String> productID = new ArrayList<String>();
-    ImageButton btnCarrito;
+    Button btnCarrito;
+    TextView tvCantidad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class TiendaActivity extends BaseActivity {
 
         spDirecciones = findViewById(R.id.spDireccionPed);
         lstProductos = findViewById((R.id.lstMisPedidos));
+        tvCantidad = findViewById(R.id.tvCantidad);
 
         final TextView title = findViewById(R.id.textUsuarioTitulo);
         title.setText(getSaludo());
@@ -173,8 +175,7 @@ public class TiendaActivity extends BaseActivity {
                                                 Double.valueOf(prec.getText().toString()));
 
                         order.AdicionaDet(details);
-
-
+                        tvCantidad.setText(String.valueOf(order.getDetails().size()));
 
                     }
                 });

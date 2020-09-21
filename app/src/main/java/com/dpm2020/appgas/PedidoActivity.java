@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -12,7 +11,6 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dpm2020.appgas.data.Order;
 import com.dpm2020.appgas.network.service.PedidoService;
@@ -33,6 +31,8 @@ public class PedidoActivity extends BaseActivity  {
     Spinner spDireccionPed;
     ListView lstMisPedidos;
     TextView txtTotalPed;
+    ImageButton btnDirecc;
+    Button btnPagar;
 
     ArrayList<String> direcciones = new ArrayList<String>();
     ArrayList<String> direccionesId = new ArrayList<>();
@@ -53,7 +53,27 @@ public class PedidoActivity extends BaseActivity  {
         spDireccionPed = findViewById(R.id.spDireccionPed);
         lstMisPedidos = findViewById((R.id.lstMisPedidos));
         txtTotalPed = findViewById(R.id.txtTotalPed);
+        btnDirecc = findViewById(R.id.btnDirecc);
+        btnPagar = findViewById(R.id.btnPagar);
 
+        btnDirecc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), DireccionActivity.class));
+            }
+        });
+
+
+        btnPagar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intentpago =new Intent(getApplicationContext(), MetodoPagoActivity.class);
+
+                intentpago.putExtra("total", order.calcularTotal());
+                startActivityForResult(intentpago, 1);
+            }
+        });
 
         final TextView title = findViewById(R.id.textUsuarioTitulo);
         title.setText(getSaludo());
@@ -83,6 +103,26 @@ public class PedidoActivity extends BaseActivity  {
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+
+                //retorna PaymentMethod y CardID
+                String sPMetodo = data.getStringExtra("metodo");
+                String sCardID = data.getStringExtra("cardId");
+                order.setPayment_method(sPMetodo);
+                order.setCard_id(sCardID);
+
+                //TODO: Grabar la Orden
+
+                services.registrarOrder(order);
+
+                startActivity(new Intent(getApplicationContext(), PagoRealizadoActivity.class));
+            }
+        }
+    }
 
     public void getInfo() {
         services.getAddress();
@@ -124,7 +164,7 @@ public class PedidoActivity extends BaseActivity  {
     public void showOrder() {
 
         // elige la dirección
-        // TODO: pasar el AddressID contenido en data.
+
         int pos = -1;
         pos = direccionesId.indexOf(order.getAddress_id());
         if (pos > 0) {
