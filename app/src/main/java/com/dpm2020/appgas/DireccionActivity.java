@@ -140,11 +140,7 @@ public class DireccionActivity extends BaseActivity {
 
                     service.registrar(nombre, interior, lat, lon);
 
-                    Intent intent = getIntent();
-                    if (intent != null) {
-                        setResult(1, intent);
-                    }
-                    finish();
+                    startActivity(new Intent(getApplicationContext(), TiendaActivity.class));
 
                 }else{
                     muestraMensaje("Validación", msj);

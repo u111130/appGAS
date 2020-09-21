@@ -9,6 +9,27 @@ public class Order {
     private String card_id;
     private List<Details> details = new ArrayList<Order.Details>();
 
+    public static class Products {
+        private String product_id;
+        private int quantity;
+
+        public String getProduct_id() {
+            return product_id;
+        }
+
+        public void setProduct_id(String product_id) {
+            this.product_id = product_id;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
+    }
+
     public static class Details {
         private String product_id;
         private String name;

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_act_metodo_pago">
-
+    tools:context=".MetodoPagoActivity">
 
 
     <EditText
@@ -13,33 +12,52 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
-        android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="58dp"
         android:background="@drawable/input_rounded"
         android:elevation="3dp"
         android:hint="@string/prompt_codigotarjeta"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="4"
         android:padding="10dip"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtVencimiento"
         app:layout_constraintTop_toBottomOf="@+id/txtTitular" />
 
     <EditText
-        android:id="@+id/txtVencimiento"
-        android:layout_width="180dp"
+        android:id="@+id/txtVencimMM"
+        android:layout_width="50dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginStart="58dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/input_rounded"
+        android:digits="0123456789"
         android:elevation="3dp"
-        android:hint="@string/prompt_vencimientotarjeta"
-        android:inputType="textPersonName"
+        android:hint="MM"
+        android:inputType="text"
+        android:maxLength="2"
         android:padding="10dip"
         android:selectAllOnFocus="true"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitular" />
+
+    <EditText
+        android:id="@+id/txtVencimAA"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/input_rounded"
+        android:elevation="3dp"
+        android:hint="AA"
+        android:inputType="number"
+        android:maxLength="2"
+        android:padding="10dip"
+        android:selectAllOnFocus="true"
+        app:layout_constraintStart_toEndOf="@+id/textView21"
         app:layout_constraintTop_toBottomOf="@+id/txtTitular" />
 
     <ImageView
@@ -136,6 +154,7 @@
         android:elevation="3dp"
         android:hint="@string/prompt_numerotarjeta"
         android:inputType="number"
+        android:maxLength="16"
         android:padding="10dip"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -162,33 +181,40 @@
         app:layout_constraintTop_toBottomOf="@+id/txtNumeroTarjeta" />
 
     <Button
-        android:id="@+id/btnPagar"
+        android:id="@+id/btnPagarMetodo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginStart="58dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="58dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
         android:background="@drawable/button"
         android:elevation="3dp"
         android:text="@string/action_sign_in"
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtVencimiento"
-        tools:text="Pagar S/ 80.00" />
+        app:layout_constraintTop_toBottomOf="@+id/txtVencimMM"
+        tools:text="Pagar S" />
 
     <TextView
         android:id="@+id/tvPagoEfectivo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:inputType="textWebEditText"
         android:text="Pagar con efectivo contraentrega"
         android:textColor="#827BF3"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPagar" />
+        app:layout_constraintTop_toBottomOf="@+id/btnPagarMetodo" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -239,6 +265,19 @@
         android:background="@drawable/ic_baseline_description_24"
         app:layout_constraintStart_toEndOf="@+id/button6"
         app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="/"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/txtVencimMM"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitular" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
