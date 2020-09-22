@@ -16,8 +16,11 @@ import com.dpm2020.appgas.network.service.MisPedidosService;
 import com.dpm2020.appgas.network.service.RegistroService;
 import com.dpm2020.appgas.network.service.TiendaService;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,7 +48,7 @@ public class actMisPedidos extends BaseActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_mis_pedidos);
-        asignarReferencias();
+        //asignarReferencias();
 
         // MENU
         tvCantidad = findViewById(R.id.tvCantidad);
@@ -89,21 +92,35 @@ public class actMisPedidos extends BaseActivity {
         services.getPedidos();
     }
 
+    /*
     public void setOrders(JSONArray data) {
         Gson gson = new Gson();
         String json = gson.toJson(data);
         Log.i("TuGAS", json);
     }
-    private void asignarReferencias() {
+     */
+
+    public void setOrders(JSONArray data)  {
 
         ArrayList<String[]> lista = new ArrayList<>();
+        /*
         String[] pedido1 = {"202034108","18/08/2020 15:30","Calle ABC #222 dpto 101 San Isidro","Despachando","Luis","25.42","4.58","30.00","Envasado 5kg","1","S/. 20.00","2"};
         String[] pedido2 = {"202012603","18/08/2020 08:20","Av La Paz 888 dpto 101 Miraflores","Delivery","Luis","25.42","4.58","30.00","Envasado 5kg","1","S/. 20.00","2"};
         String[] pedido3 = {"202010322","15/06/2020 15:30","Calle ABC #222 dpto 101 San Isidro","Entregado","Luis","25.42","4.58","30.00","Envasado 5kg","1","S/. 20.00","1"};
 
-        lista.add(pedido1);
-        lista.add(pedido2);
-        lista.add(pedido3);
+         */
+
+        for (int i=0; i < data.length(); i++) {
+            try {
+                JSONObject obj = data.getJSONObject(i);
+                String code = String.valueOf(obj.get("when")) + "-"+ String.valueOf(obj.get("code"));
+                String[] pedido = {code,"18/08/2020 15:30","Calle ABC #222 dpto 101 San Isidro","Despachando","Luis","25.42","4.58","30.00","Envasado 5kg","1","S/. 20.00","2"};
+                lista.add(pedido);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
 
         ArrayList<HashMap<String,String>> mispedidos = new ArrayList<>();
         for (String[] pedido : lista) {
