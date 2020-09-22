@@ -15,6 +15,9 @@ import com.dpm2020.appgas.network.Routes;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TarjetaService extends BaseService {
     private MetodoPagoActivity activity;
 
@@ -62,7 +65,15 @@ public class TarjetaService extends BaseService {
                 hideLoading();
                 showMessage("No se pudo registrar la tarjeta, inténtelo nuevamente");
             }
-        }));
+        }){
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/json; charset=UTF-8");
+                params.put("Authorization", "JWT "+ token);
+                return params;
+            }
+        });
         return ret;
     }
 

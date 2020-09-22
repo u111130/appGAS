@@ -39,6 +39,7 @@ public class PedidoActivity extends BaseActivity  {
     ArrayList<String> direccionesId = new ArrayList<>();
     List<Order.Details> lista = new ArrayList<>();
 
+    ArrayAdapter adapter;
     SimpleAdapter adapter2;
 
     //Order order = new Order();
@@ -77,10 +78,10 @@ public class PedidoActivity extends BaseActivity  {
         btnPagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intentpago =new Intent(getApplicationContext(), MetodoPagoActivity.class);
-
+                Intent intentpago = new Intent(getApplicationContext(), MetodoPagoActivity.class);
+                order.setAddress_id(direccionesId.get(spDireccionPed.getSelectedItemPosition()));
                 intentpago.putExtra("total", order.calcularTotal());
+                saveCart();
                 startActivityForResult(intentpago, 1);
             }
         });
@@ -203,7 +204,7 @@ public class PedidoActivity extends BaseActivity  {
 
         }
 
-        ArrayAdapter adapter = new ArrayAdapter (this, android.R.layout.simple_list_item_activated_1, direcciones);
+        adapter = new ArrayAdapter (this, android.R.layout.simple_list_item_activated_1, direcciones);
         spDireccionPed.setAdapter(adapter);
 
         int addressSelected = mTuGasPreference.getInt("direccion");

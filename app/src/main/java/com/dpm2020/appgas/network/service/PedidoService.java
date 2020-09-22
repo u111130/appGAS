@@ -87,21 +87,32 @@ public class PedidoService extends BaseService {
         List<Order.Details> pedido = new ArrayList<>();
         List<Order.Products> orderdet = new ArrayList<>();
 
+        JSONArray detalle = new JSONArray();
         JSONObject json = new JSONObject();
         try{
             json.put("address_id", order.getAddress_id());
             json.put("payment_method", order.getPayment_method());
-            json.put("card_id", order.getCard_id());
+            json.put("card_id", "5f9b5d3c-c2af-4042-9ea0-50d8bfd867ef");
+            // json.put("card_id", order.getCard_id());
 
             for (Order.Details details : pedido = order.getDetails()) {
 
+                JSONObject item = new JSONObject();
+
+                /*
                 Order.Products prod = new Order.Products();
                 prod.setProduct_id(details.getProduct_id());
                 prod.setQuantity(details.getQuantity());
-
                 orderdet.add(prod);
+                */
+
+                item.put("product_id", details.getProduct_id());
+                item.put("quantity", details.getQuantity());
+                detalle.put(item);
+
             }
-            json.put("details", orderdet);
+
+            json.put("details", detalle);
             Gson gson = new Gson();
             String jsonString = gson.toJson(json);
             Log.i("GUARDAR", jsonString);
