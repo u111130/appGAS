@@ -3,15 +3,25 @@ package com.dpm2020.appgas;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.dpm2020.appgas.network.service.MisPedidosService;
+import com.dpm2020.appgas.network.service.RegistroService;
+import com.dpm2020.appgas.network.service.TiendaService;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class actMisPedidos extends AppCompatActivity {
+public class actMisPedidos extends BaseActivity {
 
+    actMisPedidos activity;
+    MisPedidosService services;
     ListView lstMisPedidos;
     String[] fromMP = new String[] {"Pedido","Fecha","Direccion","Estado","Despachador","SubTotal","IGV","Total","Producto","Cantidad","TotalLinea"};
     int[] toMP= new int[] {R.id.txtPedidoMPed, R.id.txtFechaMPed, R.id.txtDireccionMPed, R.id.txtEstadoMPed, R.id.txtDespachadorMPed, R.id.txtSubTotalMPed, R.id.txtIGVMPed, R.id.txtTotalMPed, R.id.txtProductoMPed, R.id.txtCantidadMPed, R.id.txtTotalLineaMPed};
@@ -19,9 +29,20 @@ public class actMisPedidos extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final actMisPedidos activity = this;
+        services = new MisPedidosService(activity);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_mis_pedidos);
         asignarReferencias();
+
+        services.getPedidos();
+    }
+
+    public void setOrders(JSONArray data) {
+        Gson gson = new Gson();
+        String json = gson.toJson(data);
+        Log.i("TuGAS", json);
     }
     private void asignarReferencias() {
 
