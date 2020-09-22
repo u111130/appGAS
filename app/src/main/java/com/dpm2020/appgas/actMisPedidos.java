@@ -2,11 +2,15 @@ package com.dpm2020.appgas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.dpm2020.appgas.network.service.MisPedidosService;
 import com.dpm2020.appgas.network.service.RegistroService;
@@ -26,6 +30,13 @@ public class actMisPedidos extends BaseActivity {
     String[] fromMP = new String[] {"Pedido","Fecha","Direccion","Estado","Despachador","SubTotal","IGV","Total","Producto","Cantidad","TotalLinea"};
     int[] toMP= new int[] {R.id.txtPedidoMPed, R.id.txtFechaMPed, R.id.txtDireccionMPed, R.id.txtEstadoMPed, R.id.txtDespachadorMPed, R.id.txtSubTotalMPed, R.id.txtIGVMPed, R.id.txtTotalMPed, R.id.txtProductoMPed, R.id.txtCantidadMPed, R.id.txtTotalLineaMPed};
 
+    // MENU
+    Button btnCarrito;
+    Button btnTienda;
+    Button btnMisPedidos;
+    Button btnConfig;
+    TextView tvCantidad;
+    // END MENU
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +46,45 @@ public class actMisPedidos extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_mis_pedidos);
         asignarReferencias();
+
+        // MENU
+        tvCantidad = findViewById(R.id.tvCantidad);
+        btnTienda = findViewById(R.id.button3);
+        btnCarrito = findViewById(R.id.btnCarrito);
+        btnMisPedidos = findViewById(R.id.button8);
+        btnConfig = findViewById(R.id.button7);
+
+        btnTienda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                startActivity(new Intent(getApplicationContext(), TiendaActivity.class));
+            }
+        });
+
+        btnCarrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                startActivity(new Intent(getApplicationContext(), PedidoActivity.class));
+            }
+        });
+
+        btnMisPedidos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                startActivity(new Intent(getApplicationContext(), actMisPedidos.class));
+            }
+        });
+
+        btnConfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                mTuGasPreference.clear();
+                startActivity(new Intent(activity.getApplicationContext(), LoginActivity.class));
+            }
+        });
+        this.updateCart();
+        tvCantidad.setText(String.valueOf(this.order.getDetails().size()));
+        // END MENU
 
         services.getPedidos();
     }

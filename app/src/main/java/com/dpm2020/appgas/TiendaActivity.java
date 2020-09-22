@@ -38,7 +38,7 @@ public class TiendaActivity extends BaseActivity {
 
 
     //Enrique
-    Order order = new Order();
+    // Order order = new Order();
     ArrayList<String> direccionID = new ArrayList<String>();
     ArrayList<String> productID = new ArrayList<String>();
 

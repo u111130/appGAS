@@ -42,15 +42,12 @@ public class PedidoActivity extends BaseActivity  {
     ArrayAdapter adapter;
     SimpleAdapter adapter2;
 
-    //Order order = new Order();
-
-    //Order order;
-
     // MENU
     Button btnCarrito;
     Button btnTienda;
     Button btnMisPedidos;
     Button btnConfig;
+    TextView tvCantidad;
     // END MENU
 
     @Override
@@ -89,28 +86,8 @@ public class PedidoActivity extends BaseActivity  {
         final TextView title = findViewById(R.id.textUsuarioTitulo);
         title.setText(getSaludo());
 
-        //order = new Order();
-
-        /*
-        Intent i = getIntent();
-        if (i != null) {
-            // JSONObject datos = new JSONObject(i.getSerializableExtra("order"));
-            //order = (Order) i.getSerializableExtra("order");
-            //order = null;
-            Gson gson = new Gson();
-            int lineas = Integer.valueOf(i.getStringExtra("lineas"));
-            //String dato = i.getStringExtra("order");
-            if (lineas > 0) {
-                //for (int x = 1; x <= lineas; x++) {
-                //    Order.Details det1 = new Order.Details();
-                //    order.AdicionaDet(det1);
-                //}
-                //order = gson.fromJson(i.getStringExtra("order"),Order.class);
-            }
-        }
-         */
-
         // MENU
+        tvCantidad = findViewById(R.id.tvCantidad);
         btnTienda = findViewById(R.id.button3);
         btnCarrito = findViewById(R.id.btnCarrito);
         btnMisPedidos = findViewById(R.id.button8);
@@ -145,7 +122,7 @@ public class PedidoActivity extends BaseActivity  {
             }
         });
         this.updateCart();
-        //tvCantidad.setText(String.valueOf(this.order.getDetails().size()));
+        tvCantidad.setText(String.valueOf(this.order.getDetails().size()));
         // END MENU
 
 
