@@ -13,6 +13,7 @@ import com.dpm2020.appgas.LoginActivity;
 import com.dpm2020.appgas.PedidoActivity;
 import com.dpm2020.appgas.data.Order;
 import com.dpm2020.appgas.network.Routes;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -101,6 +102,9 @@ public class PedidoService extends BaseService {
                 orderdet.add(prod);
             }
             json.put("details", orderdet);
+            Gson gson = new Gson();
+            String jsonString = gson.toJson(json);
+            Log.i("GUARDAR", jsonString);
 
         }catch (JSONException e){
             e.printStackTrace();

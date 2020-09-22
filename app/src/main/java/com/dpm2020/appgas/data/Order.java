@@ -160,5 +160,10 @@ public class Order {
     public void setDetails(List<Details> details) {
         this.details = details;
     }
+
+    public void addDetailOrder(String product_id, String name, int quantity, double price, double linetotal) {
+        Order.Details details = new Order.Details(product_id, name, quantity, price, linetotal);
+        this.AdicionaDet(details);
+    }
 }
 

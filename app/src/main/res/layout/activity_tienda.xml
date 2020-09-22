@@ -51,11 +51,10 @@
         android:id="@+id/spDireccionPed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -73,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spDireccionPed" />
 
 
-
+    <!-- menu -->
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="0dp"
@@ -147,6 +146,19 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btnCarrito"
         app:layout_constraintEnd_toEndOf="@+id/btnCarrito" />
+    <!-- END MENU -->
 
+    <ImageButton
+        android:id="@+id/btnDirecc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/spDireccionPed"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@drawable/ic_baseline_add_circle_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

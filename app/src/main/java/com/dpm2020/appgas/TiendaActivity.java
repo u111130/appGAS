@@ -2,8 +2,10 @@ package com.dpm2020.appgas;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -39,13 +41,20 @@ public class TiendaActivity extends BaseActivity {
     Order order = new Order();
     ArrayList<String> direccionID = new ArrayList<String>();
     ArrayList<String> productID = new ArrayList<String>();
+
+    // MENU
     Button btnCarrito;
+    Button btnTienda;
+    Button btnMisPedidos;
+    Button btnConfig;
+    // END MENU
+
     TextView tvCantidad;
+    ImageButton btnDirecc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         final TiendaActivity activity = this;
         services = new TiendaService(activity);
 
@@ -54,43 +63,76 @@ public class TiendaActivity extends BaseActivity {
         spDirecciones = findViewById(R.id.spDireccionPed);
         lstProductos = findViewById((R.id.lstMisPedidos));
         tvCantidad = findViewById(R.id.tvCantidad);
+        btnDirecc = findViewById(R.id.btnDirecc);
 
         final TextView title = findViewById(R.id.textUsuarioTitulo);
         title.setText(getSaludo());
-
-
         //Enrique
+        // MENU
+        btnTienda = findViewById(R.id.button3);
         btnCarrito = findViewById(R.id.btnCarrito);
+        btnMisPedidos = findViewById(R.id.button8);
+        btnConfig = findViewById(R.id.button7);
+
+        btnTienda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                startActivity(new Intent(getApplicationContext(), TiendaActivity.class));
+            }
+        });
 
         btnCarrito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                IrCarrito();
-
+                startActivity(new Intent(getApplicationContext(), PedidoActivity.class));
             }
-        });;
+        });
 
+        btnMisPedidos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                startActivity(new Intent(getApplicationContext(), actMisPedidos.class));
+            }
+        });
 
+        btnConfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                mTuGasPreference.clear();
+                startActivity(new Intent(activity.getApplicationContext(), LoginActivity.class));
+            }
+        });
+        this.updateCart();
+        tvCantidad.setText(String.valueOf(this.order.getDetails().size()));
+        // END MENU
+
+        btnDirecc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), DireccionActivity.class));
+            }
+        });
+
+        spDirecciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                mTuGasPreference.putInt("direccion", position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
         getInfo();
+
     }
-
-    public void IrCarrito(){
-        Gson gson = new Gson();
-        Intent intent=new Intent(this.getApplicationContext(), PedidoActivity.class);
-
-        order.setAddress_id(direccionID.get(spDirecciones.getSelectedItemPosition()));
-        int i = order.getDetails().size();
-
-        intent.putExtra("lineas", String.valueOf(i));
-        intent.putExtra("order", gson.toJson(order));
-
-        startActivity(intent);
-    }
-
 
     public void getInfo() {
         services.getAddress();
         services.getProducts();
+        tvCantidad.setText(String.valueOf(order.getDetails().size()));
     }
 
     public void setAddress(JSONArray data) {
@@ -100,35 +142,26 @@ public class TiendaActivity extends BaseActivity {
         ArrayList<HashMap<String,String>> result = new ArrayList<>();
         for (int i = 0; i < data.length(); i++)
         {
-
             try {
                 JSONObject item = data.getJSONObject(i);
-                /*
-                HashMap<String,String> temp = new HashMap<>();
-                temp.put("id", item.getString("id"));
-                temp.put("name", item.getString("name"));
-                temp.put("inside", item.getString("inside"));
-                temp.put("latitude", item.getString("latitude"));
-                temp.put("longitude", item.getString("longitude"));
-                // temp.put("member_id", item.getString("member_id"));
 
-                result.add(temp);
-                */
                 direcciones.add(i, item.getString("name"));
                 direccionID.add(i, item.getString("id"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
         }
 
         ArrayAdapter adapter = new ArrayAdapter (this, android.R.layout.simple_list_item_activated_1, direcciones);
         spDirecciones.setAdapter(adapter);
+        int addressSelected = mTuGasPreference.getInt("direccion");
+        if (addressSelected != -1) {
+            spDirecciones.setSelection(addressSelected);
+        }
     }
 
     public void setProducts(JSONArray data) {
         // TODO: GUARDAR PRODUCTOS EN BASE DE DATOS LOCAL
-
         ArrayList<HashMap<String,String>> result = new ArrayList<>();
         for (int i = 0; i < data.length(); i++)
         {
@@ -154,8 +187,9 @@ public class TiendaActivity extends BaseActivity {
         String[] from = new String[] {"Producto","Precio","Descripcion"};
         int[] to = new int[] {R.id.txtProducto, R.id.txtPrecio, R.id.txtDescripcion};
 
+        final TiendaActivity activity = this;
         // Enrique
-        SimpleAdapter adapter2 = new SimpleAdapter(this, result, R.layout.tienda_fila,from, to)
+        final SimpleAdapter adapter2 = new SimpleAdapter(this, result, R.layout.tienda_fila,from, to)
         {
             @Override
             public View getView (final int position, View convertView, ViewGroup parent)
@@ -169,13 +203,14 @@ public class TiendaActivity extends BaseActivity {
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View arg0) {
-                        Order.Details details = new Order.Details(productID.get(position),
-                                                prod.getText().toString(),
-                                                1, Double.valueOf(prec.getText().toString()),
-                                                Double.valueOf(prec.getText().toString()));
-
-                        order.AdicionaDet(details);
+                        order.addDetailOrder(productID.get(position),
+                                prod.getText().toString(),
+                                1, Double.valueOf(prec.getText().toString()),
+                                Double.valueOf(prec.getText().toString()));
                         tvCantidad.setText(String.valueOf(order.getDetails().size()));
+                        Gson gson = new Gson();
+                        String json = gson.toJson(order);
+                        mTuGasPreference.putString("cart", json);
 
                     }
                 });

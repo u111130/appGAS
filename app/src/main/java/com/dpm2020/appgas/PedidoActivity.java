@@ -2,6 +2,7 @@ package com.dpm2020.appgas;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -38,9 +39,18 @@ public class PedidoActivity extends BaseActivity  {
     ArrayList<String> direccionesId = new ArrayList<>();
     List<Order.Details> lista = new ArrayList<>();
 
+    SimpleAdapter adapter2;
+
     //Order order = new Order();
 
-    Order order;
+    //Order order;
+
+    // MENU
+    Button btnCarrito;
+    Button btnTienda;
+    Button btnMisPedidos;
+    Button btnConfig;
+    // END MENU
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +88,9 @@ public class PedidoActivity extends BaseActivity  {
         final TextView title = findViewById(R.id.textUsuarioTitulo);
         title.setText(getSaludo());
 
-        order = new Order();
+        //order = new Order();
 
+        /*
         Intent i = getIntent();
         if (i != null) {
             // JSONObject datos = new JSONObject(i.getSerializableExtra("order"));
@@ -93,9 +104,48 @@ public class PedidoActivity extends BaseActivity  {
                 //    Order.Details det1 = new Order.Details();
                 //    order.AdicionaDet(det1);
                 //}
-                order = gson.fromJson(i.getStringExtra("order"),Order.class);
+                //order = gson.fromJson(i.getStringExtra("order"),Order.class);
             }
         }
+         */
+
+        // MENU
+        btnTienda = findViewById(R.id.button3);
+        btnCarrito = findViewById(R.id.btnCarrito);
+        btnMisPedidos = findViewById(R.id.button8);
+        btnConfig = findViewById(R.id.button7);
+
+        btnTienda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                startActivity(new Intent(getApplicationContext(), TiendaActivity.class));
+            }
+        });
+
+        btnCarrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                startActivity(new Intent(getApplicationContext(), PedidoActivity.class));
+            }
+        });
+
+        btnMisPedidos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                startActivity(new Intent(getApplicationContext(), actMisPedidos.class));
+            }
+        });
+
+        btnConfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                mTuGasPreference.clear();
+                startActivity(new Intent(activity.getApplicationContext(), LoginActivity.class));
+            }
+        });
+        this.updateCart();
+        //tvCantidad.setText(String.valueOf(this.order.getDetails().size()));
+        // END MENU
 
 
         getInfo();
@@ -114,6 +164,8 @@ public class PedidoActivity extends BaseActivity  {
                 String sCardID = data.getStringExtra("cardId");
                 order.setPayment_method(sPMetodo);
                 order.setCard_id(sCardID);
+
+
 
                 //TODO: Grabar la Orden
 
@@ -142,9 +194,7 @@ public class PedidoActivity extends BaseActivity  {
 
             try {
                 JSONObject item = data.getJSONObject(i);
-                /*
-                result.add(temp);
-                */
+
                 direcciones.add(i, item.getString("name"));
                 direccionesId.add(i, item.getString("id"));
             } catch (JSONException e) {
@@ -155,6 +205,11 @@ public class PedidoActivity extends BaseActivity  {
 
         ArrayAdapter adapter = new ArrayAdapter (this, android.R.layout.simple_list_item_activated_1, direcciones);
         spDireccionPed.setAdapter(adapter);
+
+        int addressSelected = mTuGasPreference.getInt("direccion");
+        if (addressSelected != -1) {
+            spDireccionPed.setSelection(addressSelected);
+        }
     }
 
     public void setOrder(JSONArray data){
@@ -187,9 +242,10 @@ public class PedidoActivity extends BaseActivity  {
         String[] from = new String[] {"Producto","Precio","Cantidad","TotalItem"};
         int[] to = new int[] {R.id.txtProductoPed, R.id.txtPrecioPed, R.id.txtCantidadPed, R.id.txtTotalMPed};
 
-        SimpleAdapter adapter2 = new SimpleAdapter(this, result, R.layout.pedido_fila,from, to)
+        final SimpleAdapter adapter2 = new SimpleAdapter(this, result, R.layout.pedido_fila,from, to)
 
         {
+
             @Override
             public View getView (final int position, View convertView, ViewGroup parent)
             {
@@ -221,8 +277,11 @@ public class PedidoActivity extends BaseActivity  {
                             linea.setLinetotal(tot);
                             linea.setQuantity(cant);
                             lista.set(position, linea);
-                            showTotal();
+
+                        } else {
+                            lista.remove(linea);
                         }
+                        showTotal();
                     }
                 });
 
@@ -252,14 +311,9 @@ public class PedidoActivity extends BaseActivity  {
 
                 return v;
             }
-        }
-        ;
-
-
+        };
 
         lstMisPedidos.setAdapter(adapter2);
-
-
 
         // muestra el total
         showTotal();
