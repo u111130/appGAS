@@ -71,6 +71,17 @@ public class TuGasPreference  {
         editor.apply();
     }
 
+    public int getInt(String key) {
+        SharedPreferences sharedPref = getSharedPreferences();
+        return sharedPref.getInt(key, -1);
+    }
+
+    public void putInt(String key, int value) {
+        SharedPreferences.Editor editor = getEditoSharedPreference();
+        editor.putInt(key, value);
+        editor.apply();
+    }
+
     public boolean getBoolean(String key) {
         SharedPreferences sharedPref = getSharedPreferences();
         return sharedPref.getBoolean(key, false);
